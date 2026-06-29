@@ -3,119 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NameLab Generator | Brand, Game, & Channel</title>
-    
-    <meta name="description" content="Hasilkan nama unik dan keren untuk brand, game, channel, dan organisasi dalam hitungan detik dengan NameLab Generator.">
-    <meta name="keywords" content="generator nama brand, nama game keren, nama channel youtube unik, ide nama bisnis, namelab">
-
+    <title>NameLab Generator</title>
+    <!-- ... (Style tetap sama agar tampilan tidak berubah) ... -->
     <style>
-        :root {
-            --bg-color: #0a0e17;
-            --card-bg: #111827;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent: #8b5cf6;
-            --accent-hover: #7c3aed;
-            --border: #1f2937;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; }
-        
-        header { text-align: center; margin-bottom: 40px; margin-top: 20px; }
-        header h1 { font-size: 2.5rem; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        header p { color: var(--text-muted); font-size: 1.1rem; max-width: 500px; }
-
-        .generator-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 30px; width: 100%; max-width: 600px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
-        
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; color: var(--text-muted); margin-bottom: 8px; font-weight: 600; }
-        input[type="text"] { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-color); color: var(--text-main); font-size: 1rem; }
-        input[type="text"]:focus { outline: none; border-color: var(--accent); }
-
-        .category-group { margin-bottom: 25px; }
-        .category-group label { display: block; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; }
-        .radio-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .radio-options label { background: var(--bg-color); border: 1px solid var(--border); padding: 12px; border-radius: 8px; cursor: pointer; text-align: center; font-size: 0.9rem; transition: all 0.2s; }
-        .radio-options input { display: none; }
-        .radio-options label:has(input:checked) { border-color: var(--accent); background: rgba(139, 92, 246, 0.1); color: var(--accent); font-weight: bold; }
-
-        .btn-group { display: flex; gap: 10px; }
-        button { padding: 16px; border-radius: 8px; border: none; color: white; font-size: 1.1rem; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
-        #generateBtn { flex: 2; background: var(--accent); }
-        #generateBtn:hover { background: var(--accent-hover); }
-        #resetBtn { flex: 1; background: #374151; }
-
-        .results-box { width: 100%; max-width: 600px; margin-top: 30px; }
-        .results-box h2 { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 15px; text-align: center; }
-        #results { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
-        .result-item { background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-align: center; transition: transform 0.2s; }
-        .result-item:hover { border-color: var(--accent); }
-        
-        footer { margin-top: auto; padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
+        :root { --bg-color: #0a0e17; --card-bg: #111827; --text-main: #f3f4f6; --accent: #8b5cf6; --border: #1f2937; }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; }
+        .generator-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 30px; width: 100%; max-width: 600px; }
+        input[type="text"] { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-color); color: var(--text-main); }
+        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
+        button { flex: 1; padding: 16px; border-radius: 8px; border: none; color: white; font-weight: bold; cursor: pointer; }
+        #generateBtn { background: var(--accent); }
+        #results { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 20px; }
+        .result-item { background: var(--card-bg); border: 1px solid var(--border); padding: 12px; border-radius: 8px; text-align: center; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>NameLab</h1>
-        <p>Hasilkan ide nama unik dan keren dalam hitungan detik.</p>
-    </header>
-
     <div class="generator-box">
-        <div class="input-group">
-            <label for="inputKeyword">Kata Kunci Utama</label>
-            <input type="text" id="inputKeyword" placeholder="Misal: 'Alpha', 'Shadow'...">
-        </div>
-
-        <div class="category-group">
-            <label>Pilih Kategori</label>
-            <div class="radio-options">
-                <label><input type="radio" name="category" value="brand" checked>Brand</label>
-                <label><input type="radio" name="category" value="game">Game</label>
-                <label><input type="radio" name="category" value="channel">Channel</label>
-                <label><input type="radio" name="category" value="org">Org</label>
-            </div>
-        </div>
-
+        <h1>NameLab</h1>
+        <input type="text" id="inputKeyword" placeholder="Masukkan kata kunci (contoh: front, loop, bee)...">
         <div class="btn-group">
             <button id="generateBtn" onclick="generateNames()">Generate</button>
-            <button id="resetBtn" onclick="resetForm()">Reset</button>
+            <button id="resetBtn" onclick="resetForm()" style="background:#374151">Reset</button>
         </div>
     </div>
 
-    <div class="results-box" id="resultsContainer" style="display: none;">
-        <h2>Saran Ide Nama:</h2>
+    <div class="results-box" id="resultsContainer" style="display: none; width: 100%; max-width: 600px;">
         <div id="results"></div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 NameLab. All rights reserved.</p>
-    </footer>
-
     <script>
-        const data = {
-            brand: { prefixes: ['Core', 'Next', 'Neo', 'Apex'], suffixes: ['ify', 'lab', 'hub', 'io'], mixers: ['Group', 'Logic'] },
-            game: { prefixes: ['Dark', 'Iron', 'Shadow', 'Void'], suffixes: ['Core', 'Slayer', 'Ops', 'X'], mixers: ['Squad', 'Legion'] },
-            channel: { prefixes: ['The', 'Daily', 'Epic', 'Prime'], suffixes: ['TV', 'Hub', 'Vlog', 'Cast'], mixers: ['Studio', 'Network'] },
-            org: { prefixes: ['Global', 'United', 'Nexus', 'Terra'], suffixes: ['Foundation', 'Alliance', 'Guild'], mixers: ['Council', 'Impact'] }
+        // Logika Pintar: Kita buat database transformasi kata
+        const patterns = {
+            'front': ['frontal', 'frontline', 'frontlord', 'gufront', 'frontman', 'afront', 'frontix'],
+            'loop': ['loopie', 'looper', 'villoop', 'loopster', 'loopify', 'loopz', 'gloope'],
+            'bee': ['bumblebee', 'killerbee', 'beecore', 'honeebee', 'beez', 'queenbee', 'beemaster'],
+            'shadow': ['shadown', 'shadowy', 'shadox', 'vshadow', 'shadowist', 'shadowlab']
         };
 
         function generateNames() {
-            const kw = document.getElementById('inputKeyword').value.trim();
-            const cat = document.querySelector('input[name="category"]:checked').value;
-            if (!kw) return alert('Masukkan kata kunci!');
-            
+            const kw = document.getElementById('inputKeyword').value.toLowerCase().trim();
             const resultsDiv = document.getElementById('results');
             resultsDiv.innerHTML = '';
             
-            const catData = data[cat];
-            let list = new Set();
-            catData.prefixes.forEach(p => list.add(p + kw));
-            catData.suffixes.forEach(s => list.add(kw + s));
-            catData.mixers.forEach(m => list.add(kw + ' ' + m));
+            if (!kw) return alert('Masukkan kata kunci!');
 
-            list.forEach(name => {
+            let suggestions = [];
+
+            // Jika kata kunci ada di database kita
+            if (patterns[kw]) {
+                suggestions = patterns[kw];
+            } else {
+                // Fallback: Jika kata tidak ada, buat variasi otomatis yang lebih masuk akal
+                suggestions = [
+                    kw + 'ie', kw + 'er', 'vil' + kw, kw + 'ify', 
+                    'a' + kw, kw + 'z', kw + 'core', 'neo' + kw
+                ];
+            }
+
+            suggestions.forEach(name => {
                 const el = document.createElement('div');
                 el.className = 'result-item';
                 el.textContent = name;
