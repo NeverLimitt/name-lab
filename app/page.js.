@@ -7,30 +7,37 @@ export default function NameLab() {
 
   const generate = () => {
     if (!keyword) return;
-    const suffixes = ['ify', 'lab', 'hub', 'core', 'tech', 'flow', 'grid', 'base', 'lytics'];
+    const suffixes = ['ify', 'lab', 'hub', 'core', 'tech', 'flow', 'grid', 'base', 'lytics', 'verse', 'craft'];
     const newResults = suffixes.map(s => `${keyword.toLowerCase()}${s}`);
     setResults(newResults);
   };
 
   return (
-    <main style={{ padding: '20px', fontFamily: 'sans-serif', maxWidth: '400px', margin: 'auto' }}>
-      <h1>NameLab</h1>
-      <input 
-        value={keyword} 
-        onChange={(e) => setKeyword(e.target.value)}
-        placeholder="Ketik kata kunci..."
-        style={{ padding: '10px', width: '70%' }}
-      />
-      <button onClick={generate} style={{ padding: '10px', marginLeft: '5px' }}>Buat</button>
+    <div style={{ backgroundColor: '#0a0a0a', color: 'white', minHeight: '100vh', padding: '20px', fontFamily: 'Arial' }}>
+      <h1 style={{ color: '#a78bfa' }}>NameLab</h1>
       
-      <div style={{ marginTop: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+        <input 
+          value={keyword} 
+          onChange={(e) => setKeyword(e.target.value)}
+          placeholder="Ketik kata kunci..."
+          style={{ padding: '10px', borderRadius: '8px', border: 'none', width: '200px' }}
+        />
+        <button 
+          onClick={generate} 
+          style={{ padding: '10px 20px', borderRadius: '8px', border: 'none', backgroundColor: '#a78bfa', color: 'white', cursor: 'pointer' }}
+        >
+          Generate
+        </button>
+      </div>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
         {results.map((name, i) => (
-          <span key={i} style={{ background: '#ddd', padding: '5px 10px', borderRadius: '15px' }}>
+          <span key={i} style={{ backgroundColor: '#1f2937', padding: '8px 16px', borderRadius: '20px', fontSize: '14px', border: '1px solid #374151' }}>
             {name}
           </span>
         ))}
       </div>
-    </main>
+    </div>
   );
 }
-
