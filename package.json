@@ -2,6 +2,6 @@
   "name": "name-lab",
   "version": "1.0.0",
   "scripts": {
-    "build": "echo 'Hello World' > index.html"
+    "build": "mkdir -p dist && echo '<h1>Mekzyzt is Live!</h1>' > dist/index.html"
   }
 }
