@@ -2,6 +2,6 @@
   "name": "name-lab",
   "version": "1.0.0",
   "scripts": {
-    "build": "mkdir -p dist && echo '<h1>Mekzyzt is Live!</h1>' > dist/index.html"
+    "build": "mkdir -p dist && echo '<!DOCTYPE html><html><body><h1>Mekzyzt Name Generator</h1><input type=\"text\" id=\"keyword\" placeholder=\"Masukkan kata kunci\"><button onclick=\"generate()\">Buat Nama</button><p id=\"result\"></p><script>function generate(){const kw=document.getElementById(\"keyword\").value;document.getElementById(\"result\").innerText=\"Ide brand untuk \"+kw+\": \"+kw+\"Lab, \"+kw+\"ify, \"+kw+\"Tech\";}</script></body></html>' > dist/index.html"
   }
 }
