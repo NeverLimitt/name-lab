@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>NameLab Generator</title>
+    <style>
+        body { background-color: #0a0a0a; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 50px; }
+        input { padding: 10px; border-radius: 8px; border: 1px solid #333; background: #1f2937; color: white; }
+        button { padding: 10px 20px; border-radius: 8px; background: #a78bfa; border: none; color: white; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>NameLab Generator</h1>
+    <input type="text" id="input" placeholder="Ketik kata kunci...">
+    <button onclick="generate()">Generate</button>
+    <div id="results" style="margin-top: 20px;"></div>
+
+    <script>
+        function generate() {
+            const kw = document.getElementById('input').value;
+            if(!kw) return;
+            const suffixes = ['ify', 'lab', 'hub', 'core'];
+            document.getElementById('results').innerHTML = suffixes.map(s => `<p>${kw}${s}</p>`).join('');
+        }
+    </script>
+</body>
+</html>
+
