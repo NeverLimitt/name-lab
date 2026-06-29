@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mekzyzt Name Generator | Brand, Game, & Channel</title>
+    <title>NameLab Generator | Brand, Game, & Channel</title>
     
-    <!-- SEO Basic -->
-    <meta name="description" content="Hasilkan nama unik dan keren untuk brand, game, channel, dan organisasi dalam hitungan detik dengan Mekzyzt Name Generator.">
-    <meta name="keywords" content="generator nama brand, nama game keren, nama channel youtube unik, ide nama bisnis, mekzyzt">
+    <meta name="description" content="Hasilkan nama unik dan keren untuk brand, game, channel, dan organisasi dalam hitungan detik dengan NameLab Generator.">
+    <meta name="keywords" content="generator nama brand, nama game keren, nama channel youtube unik, ide nama bisnis, namelab">
 
     <style>
         :root {
@@ -15,7 +14,7 @@
             --card-bg: #111827;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
-            --accent: #8b5cf6; /* Indigo */
+            --accent: #8b5cf6;
             --accent-hover: #7c3aed;
             --border: #1f2937;
         }
@@ -31,143 +30,103 @@
         
         .input-group { margin-bottom: 20px; }
         .input-group label { display: block; color: var(--text-muted); margin-bottom: 8px; font-weight: 600; }
-        input[type="text"] { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-color); color: var(--text-main); font-size: 1rem; transition: border-color 0.2s; }
+        input[type="text"] { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-color); color: var(--text-main); font-size: 1rem; }
         input[type="text"]:focus { outline: none; border-color: var(--accent); }
 
         .category-group { margin-bottom: 25px; }
         .category-group label { display: block; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; }
         .radio-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .radio-options label { background: var(--bg-color); border: 1px solid var(--border); padding: 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.9rem; transition: all 0.2s; }
+        .radio-options label { background: var(--bg-color); border: 1px solid var(--border); padding: 12px; border-radius: 8px; cursor: pointer; text-align: center; font-size: 0.9rem; transition: all 0.2s; }
         .radio-options input { display: none; }
-        .radio-options input:checked + span { color: var(--accent); font-weight: bold; }
-        .radio-options label:has(input:checked) { border-color: var(--accent); background: rgba(139, 92, 246, 0.1); }
+        .radio-options label:has(input:checked) { border-color: var(--accent); background: rgba(139, 92, 246, 0.1); color: var(--accent); font-weight: bold; }
 
-        button#generateBtn { width: 100%; padding: 16px; border-radius: 8px; background: var(--accent); border: none; color: white; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.2s; text-transform: uppercase; letter-spacing: 1px; }
-        button#generateBtn:hover { background: var(--accent-hover); }
+        .btn-group { display: flex; gap: 10px; }
+        button { padding: 16px; border-radius: 8px; border: none; color: white; font-size: 1.1rem; font-weight: bold; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        #generateBtn { flex: 2; background: var(--accent); }
+        #generateBtn:hover { background: var(--accent-hover); }
+        #resetBtn { flex: 1; background: #374151; }
 
         .results-box { width: 100%; max-width: 600px; margin-top: 30px; }
         .results-box h2 { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 15px; text-align: center; }
         #results { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
-        .result-item { background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-align: center; color: var(--text-main); font-weight: 600; transition: transform 0.2s; cursor: pointer; }
-        .result-item:hover { transform: translateY(-3px); border-color: var(--accent); }
-
+        .result-item { background: var(--card-bg); border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-align: center; transition: transform 0.2s; }
+        .result-item:hover { border-color: var(--accent); }
+        
         footer { margin-top: auto; padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.9rem; }
-        footer a { color: var(--accent); text-decoration: none; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Mekzyzt</h1>
-        <p>Hasilkan ide nama unik dan keren untuk Brand, Game, Channel, dan Organisasi dalam hitungan detik.</p>
+        <h1>NameLab</h1>
+        <p>Hasilkan ide nama unik dan keren dalam hitungan detik.</p>
     </header>
 
     <div class="generator-box">
         <div class="input-group">
             <label for="inputKeyword">Kata Kunci Utama</label>
-            <input type="text" id="inputKeyword" placeholder="Misal: 'Alpha', 'Shadow', 'Inovasi'...">
+            <input type="text" id="inputKeyword" placeholder="Misal: 'Alpha', 'Shadow'...">
         </div>
 
         <div class="category-group">
-            <label>Pilih Kategori Nama</label>
+            <label>Pilih Kategori</label>
             <div class="radio-options">
-                <label><input type="radio" name="category" value="brand" checked><span>🛒 Brand / Bisnis</span></label>
-                <label><input type="radio" name="category" value="game"><span>🎮 Game / Esports</span></label>
-                <label><input type="radio" name="category" value="channel"><span>📺 Channel / Konten</span></label>
-                <label><input type="radio" name="category" value="org"><span>🏢 Org / Komunitas</span></label>
+                <label><input type="radio" name="category" value="brand" checked>Brand</label>
+                <label><input type="radio" name="category" value="game">Game</label>
+                <label><input type="radio" name="category" value="channel">Channel</label>
+                <label><input type="radio" name="category" value="org">Org</label>
             </div>
         </div>
 
-        <button id="generateBtn" onclick="generateNames()">Generate Ide Nama</button>
+        <div class="btn-group">
+            <button id="generateBtn" onclick="generateNames()">Generate</button>
+            <button id="resetBtn" onclick="resetForm()">Reset</button>
+        </div>
     </div>
 
     <div class="results-box" id="resultsContainer" style="display: none;">
-        <h2>Saran Ide Nama Keren:</h2>
+        <h2>Saran Ide Nama:</h2>
         <div id="results"></div>
     </div>
 
     <footer>
-        <p>&copy; 2023 <a href="#">Mekzyzt</a>. Semua hak cipta dilindungi.</p>
+        <p>&copy; 2026 NameLab. All rights reserved.</p>
     </footer>
 
     <script>
-        // Data internal (Daftar kata untuk pencampuran)
         const data = {
-            brand: {
-                prefixes: ['Core', 'Next', 'Neo', 'Pro', 'Apex', 'Omni', 'Nova', 'Flux', 'Vantage', 'Kinetix'],
-                suffixes: ['ify', 'lab', 'hub', 'core', 'works', 'ly', 'io', 'synergy', 'solutions', 'ventur'],
-                mixers: ['Capital', 'Group', 'Partners', 'Dynamics', 'Logic', 'Stream', 'Bridge']
-            },
-            game: {
-                prefixes: ['Dark', 'Iron', 'Shadow', 'Void', 'Rune', 'Giga', 'Mecha', 'Cyber', 'Aether', 'Mythic'],
-                suffixes: ['Core', 'Slayer', 'Ops', 'Forge', 'Guard', 'X', 'Knight', 'Plex', 'Born', 'Breaker'],
-                mixers: ['Squad', 'Legion', 'Force', 'Raiders', 'Vanguard', 'Tactics', 'Esports']
-            },
-            channel: {
-                prefixes: ['The', 'Daily', 'Pure', 'Epic', 'Prime', 'Real', 'Unbox', 'Tech', 'Culture', 'Vibe'],
-                suffixes: ['TV', 'Hub', 'Vlog', 'Show', 'Cast', 'Corner', 'Central', 'Zone', 'Files', 'Wave'],
-                mixers: ['Studio', 'Network', 'Media', 'Productions', 'Insights', 'Spotlight']
-            },
-            org: {
-                prefixes: ['Global', 'United', 'Civic', 'Eco', 'Aura', 'Foundry', 'Nexus', 'Terra', 'Veritas', 'Unity'],
-                suffixes: ['Foundation', 'Alliance', 'Guild', 'Society', 'Circle', 'Collective', 'Union', 'Network'],
-                mixers: ['Forum', 'Council', 'Institute', 'Alliance', 'Project', 'Impact']
-            }
+            brand: { prefixes: ['Core', 'Next', 'Neo', 'Apex'], suffixes: ['ify', 'lab', 'hub', 'io'], mixers: ['Group', 'Logic'] },
+            game: { prefixes: ['Dark', 'Iron', 'Shadow', 'Void'], suffixes: ['Core', 'Slayer', 'Ops', 'X'], mixers: ['Squad', 'Legion'] },
+            channel: { prefixes: ['The', 'Daily', 'Epic', 'Prime'], suffixes: ['TV', 'Hub', 'Vlog', 'Cast'], mixers: ['Studio', 'Network'] },
+            org: { prefixes: ['Global', 'United', 'Nexus', 'Terra'], suffixes: ['Foundation', 'Alliance', 'Guild'], mixers: ['Council', 'Impact'] }
         };
 
         function generateNames() {
-            const keyword = document.getElementById('inputKeyword').value.trim();
-            const category = document.querySelector('input[name="category"]:checked').value;
+            const kw = document.getElementById('inputKeyword').value.trim();
+            const cat = document.querySelector('input[name="category"]:checked').value;
+            if (!kw) return alert('Masukkan kata kunci!');
+            
             const resultsDiv = document.getElementById('results');
-            const container = document.getElementById('resultsContainer');
+            resultsDiv.innerHTML = '';
             
-            resultsDiv.innerHTML = ''; // Clear previous
+            const catData = data[cat];
+            let list = new Set();
+            catData.prefixes.forEach(p => list.add(p + kw));
+            catData.suffixes.forEach(s => list.add(kw + s));
+            catData.mixers.forEach(m => list.add(kw + ' ' + m));
 
-            if (!keyword) {
-                alert('Silakan masukkan kata kunci utama terlebih dahulu.');
-                return;
-            }
-
-            const catData = data[category];
-            let generatedNames = new Set(); // Use Set to avoid duplicates
-
-            // --- Algoritma Pencampuran Kata ---
-
-            // 1. Prefix + Keyword
-            catData.prefixes.forEach(p => generatedNames.add(capitalize(p + keyword)));
-            
-            // 2. Keyword + Suffix
-            catData.suffixes.forEach(s => generatedNames.add(capitalize(keyword + s)));
-            
-            // 3. Prefix + Keyword + Suffix (Variasi Kompleks)
-            for(let i=0; i<3; i++) {
-                const p = catData.prefixes[Math.floor(Math.random() * catData.prefixes.length)];
-                const s = catData.suffixes[Math.floor(Math.random() * catData.suffixes.length)];
-                generatedNames.add(capitalize(p + keyword + s));
-            }
-
-            // 4. Keyword + Mixer (Untuk nama yang lebih formal/deskriptif)
-            catData.mixers.forEach(m => generatedNames.add(capitalize(keyword + ' ' + m)));
-
-            // --- Menampilkan Hasil ---
-            if (generatedNames.size > 0) {
-                container.style.display = 'block';
-                // Convert set to array, shuffle, and take top 12
-                const finalNames = Array.from(generatedNames).sort(() => 0.5 - Math.random()).slice(0, 12);
-                
-                finalNames.forEach(name => {
-                    const el = document.createElement('div');
-                    el.className = 'result-item';
-                    el.textContent = name;
-                    resultsDiv.appendChild(el);
-                });
-            } else {
-                container.style.display = 'none';
-            }
+            list.forEach(name => {
+                const el = document.createElement('div');
+                el.className = 'result-item';
+                el.textContent = name;
+                resultsDiv.appendChild(el);
+            });
+            document.getElementById('resultsContainer').style.display = 'block';
         }
 
-        function capitalize(string) {
-            return string.charAt(0).toUpperCase() + string.slice(1);
+        function resetForm() {
+            document.getElementById('inputKeyword').value = '';
+            document.getElementById('resultsContainer').style.display = 'none';
         }
     </script>
 </body>
