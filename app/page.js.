@@ -1,0 +1,36 @@
+'use client';
+import { useState } from 'react';
+
+export default function NameLab() {
+  const [keyword, setKeyword] = useState('');
+  const [results, setResults] = useState([]);
+
+  const generate = () => {
+    if (!keyword) return;
+    const suffixes = ['ify', 'lab', 'hub', 'core', 'tech', 'flow', 'grid', 'base', 'lytics'];
+    const newResults = suffixes.map(s => `${keyword.toLowerCase()}${s}`);
+    setResults(newResults);
+  };
+
+  return (
+    <main style={{ padding: '20px', fontFamily: 'sans-serif', maxWidth: '400px', margin: 'auto' }}>
+      <h1>NameLab</h1>
+      <input 
+        value={keyword} 
+        onChange={(e) => setKeyword(e.target.value)}
+        placeholder="Ketik kata kunci..."
+        style={{ padding: '10px', width: '70%' }}
+      />
+      <button onClick={generate} style={{ padding: '10px', marginLeft: '5px' }}>Buat</button>
+      
+      <div style={{ marginTop: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+        {results.map((name, i) => (
+          <span key={i} style={{ background: '#ddd', padding: '5px 10px', borderRadius: '15px' }}>
+            {name}
+          </span>
+        ))}
+      </div>
+    </main>
+  );
+}
+
